@@ -114,6 +114,9 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, args):
+        print("Creating object with args:", args)  # Debug statement
+        class_name, *params = args.split()
+        print("the class name is:", class_name)  # Debug statement
         """ Create an object of any class"""
         if not args:
             print("** class name missing **")
@@ -121,7 +124,7 @@ class HBNBCommand(cmd.Cmd):
         elif args not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
-        class_name, *params = args.split()
+        #class_name, *params = args.split()
 
         new_instance = HBNBCommand.classes[class_name](*params)
         storage.save()
