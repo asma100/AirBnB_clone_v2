@@ -116,7 +116,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, args):
         print("Creating object with args:", args)  # Debug statement
-        class_name, *params = args.split()
+        class_name, *param_strings = args.split()
         print("the class name is:", class_name)  # Debug statement
         
         if not class_name:
@@ -126,14 +126,24 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
 
-        # Construct the instantiation string
-        instantiation_str = f"{class_name}({', '.join(params)})"
-        print("the  name is:", instantiation_str)  # Debug statement
-        new_instance = HBNBCommand.classes[class_name](*params)
-        new_instance.created_at = datetime.now()
-        new_instance.updated_at = datetime.now()
-        print(new_instance.id)
-        storage.save()
+        # Parse parameters
+        kwargs = {}
+        for param_string in param_strings:
+            key, value = param_string.split('=')
+            kwargs[key] = value.strip('"')  # Remove surrounding quotes
+
+        try:
+            new_instance = HBNBCommand.classes[class_name](**kwargs)
+            
+            # Set the 'created_at' and 'updated_at' attributes
+            new_instance.created_at = datetime.now()
+            new_instance.updated_at = datetime.now()
+
+            storage.save()
+            print(new_instance.id)
+            storage.save()
+        except Exception as e:
+            print("Error creating instance:", e)
         
 
     def help_create(self):
