@@ -128,19 +128,6 @@ class HBNBCommand(cmd.Cmd):
         # Construct the instantiation string
         instantiation_str = f"{class_name}({', '.join(params)})"
 
-        try:
-            new_instance = eval(instantiation_str)
-            
-            # Set the 'created_at' and 'updated_at' attributes
-            new_instance.created_at = datetime.now()
-            new_instance.updated_at = datetime.now()
-
-            storage.save()
-            print(new_instance.id)
-            storage.save()
-        except Exception as e:
-            print("Error creating instance:", e)
-
     def help_create(self):
         """ Help information for the create method """
         print("Creates a class of any type")
