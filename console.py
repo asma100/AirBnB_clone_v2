@@ -130,6 +130,11 @@ class HBNBCommand(cmd.Cmd):
 
         try:
             new_instance = eval(instantiation_str)
+            
+            # Set the 'created_at' and 'updated_at' attributes
+            new_instance.created_at = datetime.now()
+            new_instance.updated_at = datetime.now()
+
             storage.save()
             print(new_instance.id)
             storage.save()
