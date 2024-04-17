@@ -10,6 +10,7 @@ from models.state import State
 from models.city import City
 from models.amenity import Amenity
 from models.review import Review
+from datetime import datetime
 
 
 class HBNBCommand(cmd.Cmd):
@@ -129,8 +130,11 @@ class HBNBCommand(cmd.Cmd):
         instantiation_str = f"{class_name}({', '.join(params)})"
         print("the  name is:", instantiation_str)  # Debug statement
         new_instance = eval(instantiation_str)
+        new_instance.created_at = datetime.now()
+        new_instance.updated_at = datetime.now()
         print(new_instance.id)
         storage.save()
+        
 
     def help_create(self):
         """ Help information for the create method """
