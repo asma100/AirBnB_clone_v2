@@ -127,6 +127,10 @@ class HBNBCommand(cmd.Cmd):
 
         # Construct the instantiation string
         instantiation_str = f"{class_name}({', '.join(params)})"
+        print("the  name is:", instantiation_str)  # Debug statement
+        new_instance = eval(instantiation_str)
+        print(new_instance.id)
+        storage.save()
 
     def help_create(self):
         """ Help information for the create method """
