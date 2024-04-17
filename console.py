@@ -129,7 +129,7 @@ class HBNBCommand(cmd.Cmd):
         # Construct the instantiation string
         instantiation_str = f"{class_name}({', '.join(params)})"
         print("the  name is:", instantiation_str)  # Debug statement
-        new_instance = HBNBCommand.classes[class_name](instantiation_str)
+        new_instance = HBNBCommand.classes[class_name](params)
         new_instance.created_at = datetime.now()
         new_instance.updated_at = datetime.now()
         print(new_instance.id)
