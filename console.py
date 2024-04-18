@@ -133,11 +133,12 @@ class HBNBCommand(cmd.Cmd):
             kwargs[key] = value.strip('"')  # Remove surrounding quotes
 
         try:
+            print("kwargs:", kwargs)
             new_instance = HBNBCommand.classes[class_name](**kwargs)
-
-            storage.save()
+            storage.save()  # Add a breakpoint here if using a debugger
             print(new_instance.id)
             storage.save()
+        # ... rest of the code ...
         except Exception as e:
             print("Error creating instance:", e)
         
