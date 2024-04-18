@@ -115,9 +115,9 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, args):
-        print("Creating object with args:", args)  # Debug statement
+        #print("Creating object with args:", args)  # Debug statement
         class_name, *param_strings = args.split()
-        print("the class name is:", class_name)  # Debug statement
+        #print("the class name is:", class_name)  # Debug statement
         
         if not class_name:
             print("** class name missing **")
@@ -138,7 +138,6 @@ class HBNBCommand(cmd.Cmd):
             print(new_instance.id)
             storage.save()  # Add a breakpoint here if using a debugger
             print(new_instance.id)
-            storage.save()
         # ... rest of the code ...
         except Exception as e:
             print("Error creating instance:", e)
