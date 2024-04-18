@@ -135,6 +135,7 @@ class HBNBCommand(cmd.Cmd):
         try:
             print("kwargs:", kwargs)
             new_instance = HBNBCommand.classes[class_name](**kwargs)
+            print(new_instance.id)
             storage.save()  # Add a breakpoint here if using a debugger
             print(new_instance.id)
             storage.save()
