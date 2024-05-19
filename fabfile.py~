@@ -1,0 +1,2 @@
+# fabfile.py
+from 1-pack_web_static import do_pack

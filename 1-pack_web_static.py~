@@ -1,0 +1,27 @@
+#!/usr/bin/python3
+""" This module"""
+from fabric.tasks import task
+from datetime import datetime
+import os
+
+@task
+def do_pack(c):
+    """ Fabric script that generates a .tgz archive from the contents of the
+    web_static folder """
+    try:
+        c.run("mkdir -p versions")
+        date = datetime.now().strftime("%Y%m%d%H%M%S")
+        filename = "versions/web_static_{}.tgz".format(date)
+
+        # Create the .tgz archive from the web_static folder
+        c.local("tar -cvzf {} web_static".format(filename))
+
+        # Check if the file was created successfully
+        if os.path.exists(filename):
+            print(f"Archive created successfully: {filename}")
+            return filename
+        else:
+            return None
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
