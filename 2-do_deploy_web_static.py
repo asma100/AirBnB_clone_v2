@@ -10,6 +10,7 @@ env.hosts = ['54.236.53.167', '54.236.26.139']
 env.user = 'ubuntu'
 env.key_filename = '/root/.ssh/school'
 
+
 @task
 def do_pack():
     # Implementation of do_pack function (from 1-pack_web_static.py)
@@ -23,6 +24,7 @@ def do_pack():
         return filename
     else:
         return None
+
 
 @task
 def do_deploy(archive_path):
