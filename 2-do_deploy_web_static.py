@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""task1"""
+"""this task2 it's about deployment"""
 from fabric.api import *
 from datetime import datetime
 from os.path import exists
@@ -26,6 +26,7 @@ def do_pack():
 
 @task
 def do_deploy(archive_path):
+    """for deploy"""
     # Step 1: Check if the specified archive file exists
     if not exists(archive_path):
         print(f"Error: Archive file {archive_path} not found")
