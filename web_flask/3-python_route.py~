@@ -16,10 +16,14 @@ def hbnb():
     return "HBNB"
 
 
-@app.route("/c/<text>", strict_slashes=False)
+@app.route('/c/<text>')
 def show_c_text(text):
-    text = text.replace('_', ' ')
     return f'C {escape(text)}'
+
+
+@app.route('/python/<text>/')
+def show_python_text(text='is cool'):
+    return f'Python {escape(text)}'
 
 
 if __name__ == "__main__":
