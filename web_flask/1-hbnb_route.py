@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""task0"""
+"""task1"""
 from flask import Flask
 
 app = Flask(__name__)
@@ -11,7 +11,7 @@ def hello_world():
 
 
 @app.route("/hbnb", strict_slashes=False)
-def hello_world():
+def hbnb():
     return "HBNB"
 
 
